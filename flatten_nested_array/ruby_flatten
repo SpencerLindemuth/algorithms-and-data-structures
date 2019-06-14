@@ -1,0 +1,10 @@
+def flatten(arr, return_array = [])
+    arr.each do |x|
+        if x.class == Array
+            flatten(x, return_array)
+        else
+            return_array << x
+        end
+    end
+    return_array
+end

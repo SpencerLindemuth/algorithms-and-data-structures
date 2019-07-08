@@ -1,0 +1,9 @@
+def make_palindrome(string)
+    j = string.length - 2
+    array = string.split('')
+    while j >= 0 do
+        array << array[j]
+        j -= 1
+    end
+    array.join
+end

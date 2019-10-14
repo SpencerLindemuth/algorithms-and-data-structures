@@ -65,7 +65,7 @@ class LinkedListNode{
                 if(current.value === value){
                     let remainder = current.next
                     while(remainder != null){
-                        currentBackup.addNode(remainder.value)
+                        currentBackup ? currentBackup.addNode(remainder.value) : currentBackup = new LinkedListNode(remainder.value)
                         remainder = remainder.next
                     }
                     return currentBackup
@@ -73,6 +73,31 @@ class LinkedListNode{
                 else{
                     currentBackup ? currentBackup.addNode(current.value) : currentBackup = new LinkedListNode(current.value)
                     current = current.next
+                }
+            }
+        }
+    }
+
+    deleteAtIndex(index){
+        if(this === null){
+            console.log("The list is empty")
+        }else{
+            let current = this
+            let counter = 0
+            let currentBackup
+            while(current !== null){
+                if(counter === index){
+                    let remainder = current.next
+                    while(remainder != null){
+                        currentBackup ? currentBackup.addNode(remainder.value) : currentBackup = new LinkedListNode(remainder.value)
+                        remainder = remainder.next
+                    }
+                    return currentBackup
+                }
+                else{
+                    currentBackup ? currentBackup.addNode(current.value) : currentBackup = new LinkedListNode(current.value)
+                    current = current.next
+                    counter++
                 }
             }
         }
@@ -87,4 +112,5 @@ class LinkedListNode{
   list.addNode(6)
   let four = list.search(4)
   let noFour = list.deleteAtValue(4)
-  noFour.printLinkedList()
+  let indexTwo = list.deleteAtIndex(2)
+  indexTwo.printLinkedList()
